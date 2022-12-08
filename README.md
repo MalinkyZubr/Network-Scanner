@@ -1,0 +1,2 @@
+# Algorithm
+I was very annoyed with the inconsistency of scapy's built in scanning capabilities for IP ranges, so I decided to make my own. It is slower to be sure, but it seems to be much more reliable at actually getting information.
