@@ -76,7 +76,7 @@ class Scanner:
         return list(filter(lambda x: x is not None, responses))
 
     def write_file(self, information, network):
-        with open(f"{network.split('/')[0]}_{self.__session}.json", 'w') as f:
+        with open(f"logs/{network.split('/')[0]}_{self.__session}.json", 'w') as f:
             f.write(json.dumps(information) + "\n")
 
     def format_data(self, information, **kwargs):
