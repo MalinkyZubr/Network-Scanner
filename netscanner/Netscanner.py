@@ -15,30 +15,17 @@ with warnings.catch_warnings():
     import datetime
     import sys
     import time
-    import optparse
 
 
 scapy.conf.layers.filter([scapy.Ether, scapy.ARP])
 
 
 class Scanner:
-    def __init__(self):
+    def __init__(self, options):
         self.__ether = scapy.Ether(dst="ff:ff:ff:ff:ff:ff")
 
         today = datetime.datetime.now()
         self.__session = f"{today.year}_{today.month}_{today.day}"
-
-        self.parser = optparse.OptionParser()
-        self.parser.add_option("-a", "--address", dest="address", help="Field for IPv4 Address including # octets (0.0.0.0/0 format)")
-        self.parser.add_option("-v", "--verbose", dest="verbose", action="store_true", default=False)
-        self.parser.add_option("-s", "--save", dest="save", action="store_true", default=False)
-        self.required = ['address']
-
-        options, arguments = self.parser.parse_args()
-        options = vars(options)
-        for command in self.required:
-            if not options[command]:
-                raise Exception(f"Required argument {command} not supplied")
 
         self.options = options
 
@@ -89,12 +76,6 @@ class Scanner:
     def main(self):
         information = self.generate_responses(self.generate_packets(**self.options))
         self.format_data(information, **self.options)
-
-
-if __name__ == "__main__":
-    scanner = Scanner()
-    scanner.main()
-
 
 
 

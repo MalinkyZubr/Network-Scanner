@@ -32,9 +32,3 @@ def get_ips(network_ip):
     
     return ips
 
-
-if __name__ == "__main__":
-    x = get_ips('192.68.0.0/16')
-    print("done")
-    print(len(x))
-    print(x[20000:20100])
